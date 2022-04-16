@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc",
     "postinstall": "yarn build",
-    "start": "dist/index.js",
+    "start": "yarn ./dist/index.js",
     "start:dev": "concurrently \"tsc -w\" \"nodemon ./dist\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
