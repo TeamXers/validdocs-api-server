@@ -1,0 +1,30 @@
+{
+  "name": "hrs-web-server",
+  "description": "",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "build",
+    "start": "dist/index.js",
+    "start:dev": "concurrently \"tsc -w\" \"nodemon ./dist\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamXers/hrs-web-server.git"
+  },
+  "author": "Team-X",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamXers/hrs-web-server/issues"
+  },
+  "homepage": "https://github.com/TeamXers/hrs-web-server#readme"
+}
