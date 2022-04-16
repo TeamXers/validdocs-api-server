@@ -10,6 +10,10 @@ export class Document {
     _id?: string
 
     @required()
+    @field('author', 'String')
+    author!: string
+
+    @required()
     @field('name', 'String')
     name!: string
 
