@@ -5,6 +5,19 @@ import { DocController } from "./features/documents/DocController";
 
 const router = Router();
 
+const getExpressHandler = (handler: Function): Handler => {
+    return async (req, res) => {
+        try {
+            const result = await handler(req);
+            res.json(result);
+        } catch (error: any) {
+            res.json({
+                message: error.message
+            });
+        }
+    }
+}
+
 [
     AccountController,
     DocController
@@ -19,18 +32,5 @@ const router = Router();
                 });
         });
 });
-
-const getExpressHandler = (handler: Function): Handler => {
-    return async (req, res) => {
-        try {
-            const result = await handler(req);
-            res.json(result);
-        } catch (error: any) {
-            res.json({
-                message: error.message
-            });
-        }
-    }
-}
 
 export { router };
