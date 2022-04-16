@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && yarn ./dist/index.js",
+    "start": "yarn build && node ./dist/index.js",
     "start:dev": "concurrently \"tsc -w\" \"nodemon ./dist\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
