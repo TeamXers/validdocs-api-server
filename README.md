@@ -6,4 +6,4 @@ Url: [https://valid-docs-api.herokuapp.com](https://valid-docs-api.herokuapp.com
 
 ### /accounts
 ### /docs
-### /search?searchTerm=<search-term-here>
+### /search?searchTerm=\<search-term-here\>
