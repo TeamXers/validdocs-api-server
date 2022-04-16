@@ -12,7 +12,8 @@ const getExpressHandler = (handler: Function): Handler => {
             res.json(result);
         } catch (error: any) {
             res.json({
-                message: error.message
+                message: error.message,
+                errors: error.errors
             });
         }
     }
