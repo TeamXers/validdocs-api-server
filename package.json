@@ -33,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/TeamXers/hrs-web-server/issues"
   },
-  "homepage": "https://github.com/TeamXers/hrs-web-server#readme"
+  "homepage": "https://github.com/TeamXers/hrs-web-server#readme",
+  "engines": {
+    "node": "16.x"
+  }
 }
