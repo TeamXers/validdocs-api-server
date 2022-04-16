@@ -1,11 +1,13 @@
 import { container } from "@eunovo/superbackend";
 import { Router, Handler } from "express";
 import { AccountController } from "./features/accounts/AccountController";
+import { DocController } from "./features/documents/DocController";
 
 const router = Router();
 
 [
-    AccountController
+    AccountController,
+    DocController
 ].forEach((controller) => {
     const instance = container.get(controller);
     instance.getHandlers()
