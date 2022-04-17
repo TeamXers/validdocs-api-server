@@ -22,8 +22,7 @@ export class PinataController extends BaseController {
     @post('')
     async saveFileToIPFS(req: any) {
         console.log(req.body, req.files.document);
-        const path = `/tmp/${req.files.document.name}`;
-        const fileHandle = await open(path, 'r');
+        const fileHandle = await open(req.files.document.tempFilePath, 'r');
         const fileRes = await this.pinata.pinFileToIPFS(fileHandle.createReadStream());
 
         const metadata = {
