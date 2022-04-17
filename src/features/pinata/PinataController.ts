@@ -42,7 +42,7 @@ export class PinataController extends BaseController {
         const metadata = {
             name: req.body.name,
             description: req.body.description,
-            file: fileRes.IpfsHash,
+            file: `https://gateway.pinata.cloud/ipfs/${fileRes.IpfsHash}`,
             created_by: req.body.author,
             created_at: fileRes.Timestamp
         };
