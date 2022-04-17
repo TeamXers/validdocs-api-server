@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@eunovo/superbackend@^2.0.15":
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/@eunovo/superbackend/-/superbackend-2.0.15.tgz#9bed71bc45fc8c1ce73c66478d42dc2123ce7bc9"
-  integrity sha512-Yr/ZR2RbE5UGgtf+U3Jurtkc0HwhFRsqlCjiNgHsF7eNpTKn20E7euIQvaWyWjeKXHyDqUS1B2pKqUqi6qGyoQ==
+"@eunovo/superbackend@2.0.16":
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/@eunovo/superbackend/-/superbackend-2.0.16.tgz#ce9c7933f0992da4ba04823239c484053011cca0"
+  integrity sha512-YD+P2aCYcMz10uvtngzq0CAoNii2n8MAcmp09LVGqabbfaXoyIRRDxK/I4gRiusJql41Y+jH/s4PUrykA1zm1g==
   dependencies:
     bcrypt "^5.0.0"
     inversify "^6.0.1"

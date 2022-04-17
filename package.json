@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "dependencies": {
-    "@eunovo/superbackend": "^2.0.15",
+    "@eunovo/superbackend": "2.0.16",
     "@pinata/sdk": "^1.1.25",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
