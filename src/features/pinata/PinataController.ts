@@ -24,7 +24,7 @@ export class PinataController extends BaseController {
         console.log(req.body, req.files.document);
         const fileHandle = await open(req.files.document.tempFilePath, 'r');
         const fileRes = await this.pinata.pinFileToIPFS(fileHandle.createReadStream());
-
+        console.log(fileRes);
         const metadata = {
             name: req.body.name,
             description: req.body.description,
@@ -33,7 +33,7 @@ export class PinataController extends BaseController {
             created_at: fileRes.Timestamp
         };
         const jsonRes = await this.pinata.pinJSONToIPFS(metadata);
-
+        console.log(jsonRes);
         return {
             message: 'success',
             data: jsonRes
