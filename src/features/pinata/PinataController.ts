@@ -27,7 +27,6 @@ export class PinataController extends BaseController {
 
     @post('')
     async saveFileToIPFS(req: any) {
-        console.log(req.files.document);
         const fileRes = await this.pinata.pinFromFS(
             req.files.document.tempFilePath,
             {
@@ -39,7 +38,7 @@ export class PinataController extends BaseController {
                 }
             }
         );
-        console.log('File res', fileRes);
+
         const metadata = {
             name: req.body.name,
             description: req.body.description,
@@ -58,7 +57,7 @@ export class PinataController extends BaseController {
                 }
             }
         );
-        console.log('JSON res', jsonRes);
+
         return {
             message: 'success',
             data: jsonRes
