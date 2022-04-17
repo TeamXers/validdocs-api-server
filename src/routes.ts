@@ -13,6 +13,7 @@ const getExpressHandler = (handler: Function): Handler => {
             const result = await handler(req);
             res.json(result);
         } catch (error: any) {
+            console.log(error);
             res.json({
                 message: error.message,
                 errors: error.errors

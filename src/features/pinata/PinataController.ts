@@ -1,6 +1,5 @@
 import { BaseController, controller, post } from '@eunovo/superbackend';
 import makePinata, { PinataClient } from '@pinata/sdk';
-import { open } from 'fs/promises';
 
 @controller()
 export class PinataController extends BaseController {
@@ -29,9 +28,8 @@ export class PinataController extends BaseController {
     @post('')
     async saveFileToIPFS(req: any) {
         console.log(req.files.document);
-        const fileHandle = await open(req.files.document.tempFilePath, 'r');
-        const fileRes = await this.pinata.pinFileToIPFS(
-            fileHandle.createReadStream(),
+        const fileRes = await this.pinata.pinFromFS(
+            req.files.document.tempFilePath,
             {
                 pinataMetadata: {
                     name: `${req.body.name}_file`
