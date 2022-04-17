@@ -17,7 +17,10 @@ export class PinataController extends BaseController {
 
         this.pinata = makePinata(key, secret);
         this.pinata.testAuthentication()
-            .then((auth) => console.log(auth));
+            .then(({ authenticated }) => {
+                if (authenticated) console.log('Pinata client is ready');
+                else console.log('Failed to setup Pinata');
+            });
     }
 
 
