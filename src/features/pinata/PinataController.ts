@@ -41,7 +41,7 @@ export class PinataController extends BaseController {
                 }
             }
         );
-        console.log(fileRes);
+        console.log('File res', fileRes);
         const metadata = {
             name: req.body.name,
             description: req.body.description,
@@ -60,7 +60,7 @@ export class PinataController extends BaseController {
                 }
             }
         );
-        console.log(jsonRes);
+        console.log('JSON res', jsonRes);
         return {
             message: 'success',
             data: jsonRes
