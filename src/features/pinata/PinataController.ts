@@ -60,7 +60,10 @@ export class PinataController extends BaseController {
 
         return {
             message: 'success',
-            data: jsonRes
+            data: {
+                fileHash: fileRes.IpfsHash,
+                metadataHash: jsonRes.IpfsHash
+            }
         }
     }
 
