@@ -20,6 +20,8 @@ export class PinataController extends BaseController {
             .then(({ authenticated }) => {
                 if (authenticated) console.log('Pinata client is ready');
                 else console.log('Failed to setup Pinata');
+            }).catch(error => {
+                console.log('Failed to setup Pinata:', error.message);
             });
     }
 
