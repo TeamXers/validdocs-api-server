@@ -5,7 +5,7 @@ import { open } from 'fs/promises';
 @controller()
 export class PinataController extends BaseController {
     private pinata: PinataClient;
-    
+
     constructor() {
         super('/pinata');
         const key = process.env.PINATA_API_KEY;
@@ -30,7 +30,17 @@ export class PinataController extends BaseController {
     async saveFileToIPFS(req: any) {
         console.log(req.files.document);
         const fileHandle = await open(req.files.document.tempFilePath, 'r');
-        const fileRes = await this.pinata.pinFileToIPFS(fileHandle.createReadStream());
+        const fileRes = await this.pinata.pinFileToIPFS(
+            fileHandle.createReadStream(),
+            {
+                pinataMetadata: {
+                    name: `${req.body.name}_file`
+                },
+                pinataOptions: {
+                    cidVersion: 0
+                }
+            }
+        );
         console.log(fileRes);
         const metadata = {
             name: req.body.name,
@@ -39,7 +49,17 @@ export class PinataController extends BaseController {
             created_by: req.body.author,
             created_at: fileRes.Timestamp
         };
-        const jsonRes = await this.pinata.pinJSONToIPFS(metadata);
+        const jsonRes = await this.pinata.pinJSONToIPFS(
+            metadata,
+            {
+                pinataMetadata: {
+                    name: `${req.body.name}__metadata`,
+                },
+                pinataOptions: {
+                    cidVersion: 0
+                }
+            }
+        );
         console.log(jsonRes);
         return {
             message: 'success',
