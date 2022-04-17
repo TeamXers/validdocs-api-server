@@ -2,7 +2,7 @@ import { service, CRUDService, inject, Observable, timestamp } from "@eunovo/sup
 import { Account } from "./AccountModel";
 import { AccountRepo } from "./AccountRepo";
 
-// @timestamp(Account)
+@timestamp(Account)
 @service()
 export class AccountService extends CRUDService<Account> {
     constructor(

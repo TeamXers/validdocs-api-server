@@ -17,11 +17,11 @@ export class Account {
     @field('address', 'String')
     address!: string
 
-    // @createdAt()
-    // @field('createdAt', 'Date')
-    // createdAt!: Date
+    @createdAt()
+    @field('createdAt', 'Date')
+    createdAt!: Date
 
-    // @lastUpdatedAt()
-    // @field('lastUpdatedAt', 'Date')
-    // lastUpdatedAt!: Date
+    @lastUpdatedAt()
+    @field('lastUpdatedAt', 'Date')
+    lastUpdatedAt!: Date
 }
