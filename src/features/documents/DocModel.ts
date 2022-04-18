@@ -24,6 +24,10 @@ export class Document {
     @unique() @required()
     @field('tokenId', 'Number')
     tokenId!: number
+    
+    @unique() @required()
+    @field('tranxHash', 'String')
+    tranxHash!: string
 
     @defaultValue([]) @required()
     @field('tags', '[String]')
