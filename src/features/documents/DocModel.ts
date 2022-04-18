@@ -22,8 +22,8 @@ export class Document {
     description!: string
 
     @unique() @required()
-    @field('tokenId', 'String')
-    tokenId!: string
+    @field('tokenId', 'Number')
+    tokenId!: number
 
     @defaultValue([]) @required()
     @field('tags', '[String]')
