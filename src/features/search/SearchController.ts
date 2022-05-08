@@ -24,7 +24,8 @@ export class SearchController extends BaseController {
         };
 
         const accounts = await this.accounts.findMany({ username: regex });
-        const docs = await this.docs.findMany({ name: regex, author: regex, tags: regex });
+        const docs = await this.docs.findMany({
+            $or: [{ name: regex }, { author: regex }, { tags: regex }]);
 
         return {
             message: "success",
