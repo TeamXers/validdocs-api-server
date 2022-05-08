@@ -1,8 +1,8 @@
 import { config } from "dotenv";
+config();
+
 import { connect } from "mongoose";
 import { app } from "./app";
-
-config();
 
 const essentials = [
     'DB_URI', 'PORT'
