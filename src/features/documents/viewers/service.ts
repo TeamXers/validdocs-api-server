@@ -1,7 +1,8 @@
-import { service, CRUDService, inject, Observable } from "@eunovo/superbackend";
+import { service, CRUDService, inject, Observable, timestamp } from "@eunovo/superbackend";
 import { Viewer } from "./model";
 import { ViewersRepo } from "./repo";
 
+@timestamp(Viewer)
 @service()
 export class ViewersService extends CRUDService<Viewer> {
     constructor(

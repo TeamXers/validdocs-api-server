@@ -2,6 +2,8 @@ import { BaseController, container } from "@eunovo/superbackend";
 import { Router, Handler } from "express";
 import { AccountController } from "./features/accounts/AccountController";
 import { DocController } from "./features/documents/DocController";
+import { ViewersController } from "./features/documents/viewers/ViewersController";
+import { InvitesController } from "./features/invitations/InviteController";
 import { PinataController } from "./features/pinata/PinataController";
 import { SearchController } from "./features/search/SearchController";
 
@@ -25,8 +27,10 @@ const getExpressHandler = (handler: Function): Handler => {
 [
     AccountController,
     DocController,
+    ViewersController,
     SearchController,
-    PinataController
+    PinataController,
+    InvitesController
 ].forEach((controller) => {
     const instance: BaseController = container.get(controller as any);
     instance.getHandlers()

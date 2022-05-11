@@ -9,6 +9,9 @@ export class Document {
 
     _id?: string
 
+    /**
+     * The user's username
+     */
     @required()
     @field('author', 'String')
     author!: string
@@ -29,11 +32,11 @@ export class Document {
     @field('tranxHash', 'String')
     tranxHash!: string
 
-    @defaultValue([]) @required()
+    @defaultValue([])
     @field('tags', '[String]')
     tags!: string[]
 
-    @defaultValue(true) @required()
+    @defaultValue(false)
     @field('isPublic', 'Boolean')
     isPublic!: boolean
 

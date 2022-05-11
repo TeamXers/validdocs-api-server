@@ -1,4 +1,4 @@
-import { accessControl, model, createdAt, field, lastUpdatedAt, unique } from "@eunovo/superbackend"
+import { accessControl, model, createdAt, field, lastUpdatedAt, unique, required } from "@eunovo/superbackend"
 
 @accessControl('viewers')
 @model('Viewer')
@@ -6,12 +6,13 @@ export class Viewer {
 
     _id?: string
 
-    @unique()
-    @field('user', 'String')
+    @required()
+    @field('userAddress', 'String')
     userAddress!: string
 
-    @field('document', 'Document')
-    document!: string
+    @required()
+    @field('documentTokenId', 'String')
+    documentTokenId!: string
 
     @createdAt()
     @field('createdAt', 'Date')
