@@ -9,7 +9,7 @@ export class Account {
 
     _id?: string
 
-    @unique() @required()
+    @required()
     @field('username', 'String')
     username!: string
 
