@@ -43,7 +43,9 @@ export class PinataController extends BaseController {
             name: req.body.name,
             description: req.body.description,
             file: `https://gateway.pinata.cloud/ipfs/${fileRes.IpfsHash}`,
-            created_by: req.body.author,
+            file_name: req.files.document.name,
+            file_type: req.files.document.mimetype,
+            created_by: req.body.authorAddress,
             created_at: fileRes.Timestamp
         };
         const jsonRes = await this.pinata.pinJSONToIPFS(
