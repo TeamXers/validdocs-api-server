@@ -11,7 +11,7 @@ export class Invite {
     metadata!: any
 
     /**
-     * username
+     * address
      */
     @required()
     @field('createdBy', 'String')

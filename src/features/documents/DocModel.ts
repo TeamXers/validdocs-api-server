@@ -13,8 +13,8 @@ export class Document {
      * The user's username
      */
     @required()
-    @field('author', 'String')
-    author!: string
+    @field('authorAddress', 'String')
+    authorAddress!: string
 
     @required()
     @field('name', 'String')

@@ -23,7 +23,7 @@ export class DocController extends CRUDController {
                 type: 'sign',
                 tokenId
             },
-            createdBy: document.author,
+            createdBy: document.authorAddress,
             createdAt: now,
             lastUpdatedAt: now
         });
@@ -46,7 +46,7 @@ export class DocController extends CRUDController {
                 type: 'view',
                 tokenId
             },
-            createdBy: document.author,
+            createdBy: document.authorAddress,
             createdAt: now,
             lastUpdatedAt: now
         });
