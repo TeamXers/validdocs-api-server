@@ -5,7 +5,7 @@ import { connect } from "mongoose";
 import { app } from "./app";
 
 const essentials = [
-    'DB_URI', 'PORT'
+    'DB_URI', 'PORT', 'JWT_SECRET'
 ]
 essentials.map((value) => {
     if (process.env[value] !== undefined) return;
