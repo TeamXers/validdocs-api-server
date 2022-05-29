@@ -29,10 +29,14 @@ export class AuthController extends BaseController {
             sub: addr,
             scope: "self"
         }
+        const jwt = nJwt.create(claims, signingKey);
+        // Set token to expire in 24 hours
+        jwt.setExpiration(new Date().getTime() + (24*60*60*1000));
+        
         return {
             message: 'success',
             data: {
-                token: nJwt.create(claims, signingKey).compact()
+                token: jwt.compact()
             }
         }
     }
