@@ -1,4 +1,4 @@
-import { BaseController, container, setPermissions } from "@eunovo/superbackend";
+import { BaseController, container } from "@eunovo/superbackend";
 import { Router, Handler } from "express";
 import nJwt from "njwt";
 import { AccountController } from "./features/accounts/AccountController";
@@ -8,21 +8,6 @@ import { ViewersController } from "./features/documents/viewers/ViewersControlle
 import { InvitesController } from "./features/invitations/InviteController";
 import { PinataController } from "./features/pinata/PinataController";
 import { SearchController } from "./features/search/SearchController";
-
-setPermissions({
-    accounts: {
-        create: { owner: true },
-        read: { owner: true },
-        update: { owner: true },
-        delete: { owner: true }
-    },
-    documents: {
-        create: { owner: true },
-        read: { owner: true },
-        update: { owner: true },
-        delete: { owner: true }
-    }
-});
 
 const router = Router();
 
