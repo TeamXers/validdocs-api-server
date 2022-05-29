@@ -1,6 +1,6 @@
 import {
     accessControl, model, createdAt, field, lastUpdatedAt,
-    unique, required, defaultValue
+    unique, required, defaultValue, userGroup
 } from "@eunovo/superbackend"
 
 @accessControl('documents')
@@ -12,6 +12,7 @@ export class Document {
     /**
      * The user's username
      */
+    @userGroup('owner', 'address')
     @required()
     @field('authorAddress', 'String')
     authorAddress!: string

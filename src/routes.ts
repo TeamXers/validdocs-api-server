@@ -15,6 +15,12 @@ setPermissions({
         read: { owner: true },
         update: { owner: true },
         delete: { owner: true }
+    },
+    documents: {
+        create: { owner: true },
+        read: { owner: true },
+        update: { owner: true },
+        delete: { owner: true }
     }
 });
 
