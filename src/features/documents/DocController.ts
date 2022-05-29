@@ -13,6 +13,17 @@ export class DocController extends CRUDController {
         super('/docs', documents);
     }
 
+    @get('/public')
+    async getPublic(req: any) {
+        const query = req.query || {};
+        return {
+            message: 'success',
+            date: {
+                results: this.documents.findMany({ ...query, isPublic: true })
+            }
+        }
+    }
+
     @get('/shared')
     async getShared(req: any) {
         const address = req.user.address;
