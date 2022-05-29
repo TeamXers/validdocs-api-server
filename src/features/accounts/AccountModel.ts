@@ -1,6 +1,6 @@
 import {
     accessControl, model, field, createdAt,
-    lastUpdatedAt, unique, required
+    lastUpdatedAt, unique, required, userGroup
 } from "@eunovo/superbackend"
 
 @accessControl('accounts')
@@ -13,6 +13,7 @@ export class Account {
     @field('username', 'String')
     username!: string
 
+    @userGroup('owner', 'address')
     @unique() @required()
     @field('address', 'String')
     address!: string

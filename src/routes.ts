@@ -1,4 +1,4 @@
-import { BaseController, container } from "@eunovo/superbackend";
+import { BaseController, container, setPermissions } from "@eunovo/superbackend";
 import { Router, Handler } from "express";
 import nJwt from "njwt";
 import { AccountController } from "./features/accounts/AccountController";
@@ -9,17 +9,30 @@ import { InvitesController } from "./features/invitations/InviteController";
 import { PinataController } from "./features/pinata/PinataController";
 import { SearchController } from "./features/search/SearchController";
 
+setPermissions({
+    accounts: {
+        create: { owner: true },
+        read: { owner: true },
+        update: { owner: true },
+        delete: { owner: true }
+    }
+});
+
 const router = Router();
 
 router.use((req, res, next) => {
-    const auth = req.headers.authorization;
-    const tokens = auth?.split(' ') || [];
-    if (tokens[0] === 'Bearer') {
-        const decoded = nJwt.verify(tokens[1], process.env.JWT_SECRET);
-        if (decoded)
-            (req as any).user = { address: (decoded.body as any).sub };
+    try {
+        const auth = req.headers.authorization;
+        const tokens = auth?.split(' ') || [];
+        if (tokens[0] === 'Bearer') {
+            const decoded = nJwt.verify(tokens[1], process.env.JWT_SECRET);
+            if (decoded)
+                (req as any).user = { address: (decoded.body as any).sub };
+        }
+    } catch (error) {
+    } finally {
+        next();
     }
-    next();
 });
 
 const getExpressHandler = (handler: Function): Handler => {
