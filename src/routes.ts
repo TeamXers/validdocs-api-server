@@ -21,6 +21,7 @@ router.use((req, res, next) => {
                 (req as any).user = { address: (decoded.body as any).sub };
         }
     } catch (error) {
+        console.log(error);
     } finally {
         next();
     }
