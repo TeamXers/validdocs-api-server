@@ -1,16 +1,28 @@
-import { controller, CRUDController, get, inject } from "@eunovo/superbackend";
+import { controller, CRUDController, get, inject, IRequest } from "@eunovo/superbackend";
 import { InvitesService } from "../invitations/InviteService";
 import { DocService } from "./DocService";
 import { ViewersService } from "./viewers/service";
+import { ViewActivityService } from "./views/ViewActivityService";
 
 @controller()
 export class DocController extends CRUDController {
     constructor(
         @inject(DocService) private documents: DocService,
         @inject(InvitesService) private invites: InvitesService,
-        @inject(ViewersService) private viewers: ViewersService
+        @inject(ViewersService) private viewers: ViewersService,
+        @inject(ViewActivityService) private viewActivity: ViewActivityService,
     ) {
         super('/docs', documents);
+    }
+
+    async getMany(req: any) {
+        const address = req.user?.address;
+        const { tokenId } = req.query;
+        if (tokenId && address) {
+            this.viewActivity.create({ userAddress: address, tokenId } as any);
+        }
+
+        return super.getMany(req)
     }
 
     @get('/public')
@@ -26,7 +38,7 @@ export class DocController extends CRUDController {
 
     @get('/shared')
     async getShared(req: any) {
-        const address = req.user.address;
+        const address = req.user?.address;
         const shared = await this.viewers.findMany({ userAddress: address });
         const docs = await (Promise.all(
             shared.map(value => this.documents.findOne({ tokenId: value.documentTokenId }))
@@ -34,6 +46,21 @@ export class DocController extends CRUDController {
         return {
             message: 'success',
             date: { results: docs }
+        }
+    }
+
+    @get('/recently-viewed')
+    async getRecentlyViewed(req: any) {
+        const address = req.user?.address;
+        // get last 10 views
+        const views = await this.viewActivity.getLatest({ userAddress: address }, 10);
+        const docs = await this.documents.findMany({
+            tokenId: { $in: views.map(view => view.tokenId) }
+        });
+
+        return {
+            message: 'success',
+            data: { results: docs }
         }
     }
 
