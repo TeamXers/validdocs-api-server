@@ -21,7 +21,7 @@ export class AuthController extends BaseController {
 
         const pub = ethJsUtil.ecrecover(prefixedMsg, v, r, s);
         const addrBuf = ethJsUtil.pubToAddress(pub);
-        const addr = ethJsUtil.bufferToHex(addrBuf);
+        const addr = ethJsUtil.bufferToHex(addrBuf).toLowerCase();
 
         const signingKey = process.env.JWT_SECRET;
         const claims = {
