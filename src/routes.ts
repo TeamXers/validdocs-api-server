@@ -21,7 +21,10 @@ router.use((req, res, next) => {
                 (req as any).user = { address: (decoded.body as any).sub };
         }
     } catch (error) {
-        console.log(error);
+        if (req.path !== '/auth') {
+            res.status(401);
+            next(error);
+        }
     } finally {
         next();
     }
